@@ -42,13 +42,13 @@ def delete(id_data):
     mysql.connection.commit()
     return redirect(url_for('index'))
 
-@app.route('/update', methods=['POST', 'GET'])
+@app.route('/update/', methods=['POST', 'GET'])
 def update():
     if request.method == 'POST':
         id_data = request.form['id']
         name = request.form['name']
         cpf = request.form['cpf']
-        login = request.form.get('login')
+        login = request.form['login']
         password = request.form['password']
 
         cur = mysql.connection.cursor()
