@@ -21,5 +21,44 @@ def Index():
 
     return render_template('index.html', users=data)
 
+@app.route('/insert', methods=['POST'])
+def insert():
+    if request.method == "POST":
+        flash("Data Inserted Successfully")
+        name = request.form['name']
+        cpf = request.form['cpf']
+        login = request.form.get('login')
+        password = request.form['password']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO users (name, cpf, login, password) VALUES (%s, %s, %s, %s)", (name, cpf, login, password))
+        mysql.connection.commit()
+        return redirect(url_for('Index'))
+
+@app.route('/delete/<string:id_data>', methods=['GET'])
+def delete(id_data):
+    flash("Record Has Been Deleted Successfully")
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM users WHERE id=%s", (id_data,))
+    mysql.connection.commit()
+    return redirect(url_for('Index'))
+
+@app.route('/update', methods=['POST'])
+def update():
+    if request.method == 'POST':
+        id_data = request.form['id']
+        name = request.form['name']
+        cpf = request.form['cpf']
+        login = request.form.get('login')
+        password = request.form['password']
+
+        cur = mysql.connection.cursor()
+        cur.execute("""
+        UPDATE users SET name=%s, cpf=%s, login=%s, password=%s
+        WHERE id=%s
+        """, (name, cpf, login, password, id_data))
+        flash("Data Updated Successfully")
+        mysql.connection.commit()
+        return redirect(url_for('Index'))
+
 if __name__ == "__main__":
     app.run(debug=True)
