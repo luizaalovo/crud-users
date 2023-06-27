@@ -13,7 +13,7 @@ app.config['MYSQL_DB'] = 'crud_usuarios'
 mysql = MySQL(app)
 
 @app.route('/')
-def Index():
+def index():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM users")
     data = cur.fetchall()
@@ -32,7 +32,7 @@ def insert():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO users (name, cpf, login, password) VALUES (%s, %s, %s, %s)", (name, cpf, login, password))
         mysql.connection.commit()
-        return redirect(url_for('Index'))
+        return redirect(url_for('index'))
 
 @app.route('/delete/<string:id_data>', methods=['GET'])
 def delete(id_data):
@@ -40,9 +40,9 @@ def delete(id_data):
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM users WHERE id=%s", (id_data,))
     mysql.connection.commit()
-    return redirect(url_for('Index'))
+    return redirect(url_for('index'))
 
-@app.route('/update', methods=['POST'])
+@app.route('/update', methods=['POST', 'GET'])
 def update():
     if request.method == 'POST':
         id_data = request.form['id']
@@ -58,7 +58,7 @@ def update():
         """, (name, cpf, login, password, id_data))
         flash("Data Updated Successfully")
         mysql.connection.commit()
-        return redirect(url_for('Index'))
+        return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)

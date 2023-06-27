@@ -97,20 +97,11 @@
                         <td>{{ row[2] }}</td>
                         <td>{{ row[3] }}</td>
                         <td>
-                            <a href="/edit/{{ row[0] }}" class="btn btn-warning btn-sm"
-                                data-toggle="modal" data-target="#editModal{{ row[0] }}">Edit</a>
-                            <a href="/delete/{{ row[0] }}" class="btn btn-danger btn-sm"
-                                data-toggle="modal" data-target="#deleteModal{{ row[0] }}">Delete</a>
+            <a href="/update/{{row.4}}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modaledit{{row.4}}">Edit</a>
+            <a href="/delete/{{ row.4 }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete</a>
+
                         </td>
                     </tr>
-
-                    <div id="editModal{{ row[0] }}" class="modal fade" role="dialog">
-                        <!-- Modal de edição -->
-                    </div>
-
-                    <div id="deleteModal{{ row[0] }}" class="modal fade" role="dialog">
-                        <!-- Modal de exclusão -->
-                    </div>
 
                     <div id="editModal{{ row[0] }}" class="modal fade" role="dialog">
                         <div class="modal-dialog">
