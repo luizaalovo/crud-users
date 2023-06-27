@@ -56,8 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>CPF</label>
-                                    <input name="cpf" type="text" class="form-control"
-                                        id="exampleFormControlInput1" placeholder="Enter CPF">
+                                    <input name="cpf" type="text" class="form-control" id="cpf" placeholder="Enter CPF">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
@@ -97,9 +96,11 @@
                         <td>{{ row[2] }}</td>
                         <td>{{ row[3] }}</td>
                         <td>
-                            
-            <a href="/update/{{row.4}}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal{{row.4}}">Edit</a>
-            <a href="/delete/{{ row.4 }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete</a>
+
+                            <a href="/update/{{row.4}}" class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#editModal{{row.4}}">Edit</a>
+                            <a href="/delete/{{ row.4 }}" onclick="return confirm('Are Sure Want To Deleted ?')"
+                                class="btn btn-danger btn-sm">Delete</a>
 
                         </td>
                     </tr>
@@ -124,7 +125,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>CPF</label>
-                                            <input name="cpf" type="text" class="form-control"
+                                            <input type="text" class="form-control cpf-mask"
                                                 id="exampleFormControlInput1" value="{{ row[1] }}">
                                         </div>
                                         <div class="form-group">
@@ -174,6 +175,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cpf').mask('000.000.000-00');
+            $('.cpf-mask').mask('000.000.000-00', { reverse: true });
+        });
+    </script>
 
 </body>
 
