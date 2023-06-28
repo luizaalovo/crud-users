@@ -44,3 +44,17 @@ Este é um aplicativo simples de CRUD (Create, Read, Update, Delete) para gerenc
     
 
 A partir daí, você poderá cadastrar, visualizar, atualizar e excluir usuários por meio da interface fornecida.
+
+
+## Imagens do funcionamento do protótipo
+_____________________
+![image](https://github.com/luizaalovo/crud-users/assets/94422867/a5ba2ba3-0627-4d82-8fb9-dceaad4f6ac1)
+_____________________
+![image](https://github.com/luizaalovo/crud-users/assets/94422867/df071117-6117-4e34-89dd-5c2930aa2c0f)
+_____________________
+![image](https://github.com/luizaalovo/crud-users/assets/94422867/4d9fe016-2d48-4985-b796-5af78f5e20cd)
+_____________________
+![image](https://github.com/luizaalovo/crud-users/assets/94422867/3cac4bec-87c4-4915-a465-5eb16efa2624)
+_____________________
+![image](https://github.com/luizaalovo/crud-users/assets/94422867/b65f258e-ed9f-4cec-95ff-0d1825055a50)
+_____________________
