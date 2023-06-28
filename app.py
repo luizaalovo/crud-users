@@ -45,15 +45,19 @@ def delete(id_data):
     mysql.connection.commit()
     return redirect(url_for('index'))
 
-@app.route('/update/', methods=['POST', 'GET'])
+@app.route('/update/', methods=['POST'])
 def update():
     # Função para atualizar os dados de um usuário no banco de dados
     if request.method == 'POST':
         id_data = request.form['id']
         name = request.form['name']
-        cpf = request.form['cpf']
+        cpf = request.form.get('cpf')
         login = request.form['login']
         password = request.form['password']
+
+        if not cpf:
+            flash("CPF is required")
+            return redirect(url_for('index'))
 
         cur = mysql.connection.cursor()
         cur.execute("""
