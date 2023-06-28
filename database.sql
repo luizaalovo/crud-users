@@ -1,3 +1,15 @@
+CREATE DATABASE crud_usuarios;
+
+USE crud_usuarios;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  cpf VARCHAR(14) NOT NULL,
+  login VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
 SELECT * FROM crud_usuarios.users;
 
 INSERT INTO `users` (`name`, `cpf`, `login`, `password`) VALUES

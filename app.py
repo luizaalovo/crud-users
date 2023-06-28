@@ -14,6 +14,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
+    # Função para renderizar o template index.html e exibir os usuários cadastrados
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM users")
     data = cur.fetchall()
@@ -23,6 +24,7 @@ def index():
 
 @app.route('/insert', methods=['POST'])
 def insert():
+    # Função para inserir um novo usuário no banco de dados
     if request.method == "POST":
         flash("Data Inserted Successfully")
         name = request.form['name']
@@ -36,6 +38,7 @@ def insert():
 
 @app.route('/delete/<string:id_data>', methods=['GET'])
 def delete(id_data):
+    # Função para deletar um usuário do banco de dados
     flash("Record Has Been Deleted Successfully")
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM users WHERE id=%s", (id_data,))
@@ -44,6 +47,7 @@ def delete(id_data):
 
 @app.route('/update/', methods=['POST', 'GET'])
 def update():
+    # Função para atualizar os dados de um usuário no banco de dados
     if request.method == 'POST':
         id_data = request.form['id']
         name = request.form['name']
